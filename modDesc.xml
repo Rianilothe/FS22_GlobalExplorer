@@ -4,16 +4,34 @@
     <version>1.0.0.0</version>
 	<title>
 		<en>GlobalExplorer</en>
-		<de>Globaler Explorer</de>
+		<de>GlobalerExplorer</de>
 	</title>
 
     <description>
         <en>
-		<![CDATA[Mod developer tool for viewing live game data.]]>
+		<![CDATA[The GlobalExplorer mod for FS22 provides an in-game data browser.
+- lists of known globals, history and favorites
+- lists data element names, types, values
+- tables types include element count and "name/type" if present
+- global list may be expanded locally (see modSettings/FS22_GlobalExplorer/globals.xml dir)
+]]>
 		</en>
         <de>
-		<![CDATA[Mod-Entwicklertool zum Anzeigen von Live-Spieldaten.]]>
+		<![CDATA[Der GlobalExplorer-Mod für FS22 bietet einen In-Game-Datenbrowser.
+- Listen bekannter Globals, Verlauf und Favoriten
+- listet Datenelementnamen, -typen und -werte auf
+- Tabellentypen umfassen die Elementanzahl und „Name/Typ“, falls vorhanden
+- globale Liste kann lokal erweitert werden (siehe Verzeichnis modSettings/FS22_GlobalExplorer/globals.xml)
+]]>
 		</de>
+        <fr>
+		<![CDATA[Le mod GlobalExplorer pour FS22 fournit un navigateur de données dans le jeu.
+- listes de globals connus, historique et favoris
+- répertorie les noms, les types et les valeurs des éléments de données
+- les types de tables incluent le nombre d'éléments et "nom/type" s'ils sont présents
+- la liste globale peut être développée localement (voir modSettings/FS22_GlobalExplorer/globals.xml dir)
+]]>
+		</fr>
     </description>
 
 	<iconFilename>icon.dds</iconFilename>

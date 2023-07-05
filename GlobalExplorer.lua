@@ -77,28 +77,7 @@ function GlobalExplorer:onInputOpenMenu(actionName, inputValue, callbackState, i
     self.dialog=g_gui:showDialog("GeScreen")
 	dialog.textInputElement.onFocusLeave=GlobalExplorerUI.onFocusLeave
 end
---[[
-function GlobalExplorer:printTableRecursively(inputTable, inputIndent, depth, maxDepth)
-    inputIndent = inputIndent or "  "
-    depth = depth or 0
-    maxDepth = maxDepth or 0
-    if depth > maxDepth then
-        return
-    end
-    local debugString = ""
-    for i,j in pairs(inputTable) do		
-		if type(j) == "table" then 
-			print(inputIndent..tostring(i).."["..table.getn(j).."] :: "..tostring(j))
-		else
-			print(inputIndent..tostring(i).." :: "..type(j).." = "..tostring(j))
-		end
-        if type(j) == "table" then
-            GlobalExplorer:printTableRecursively(j, inputIndent.."    ", depth+1, maxDepth)
-        end
-    end
-    return debugString
-end
---]]
+
 -------------------------------------------------------------------------------------------
 
 local indent='                                                                                                                                                     '

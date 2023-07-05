@@ -27,8 +27,7 @@ GlobalExplorerUI.colorDisabledUIv={0.0227, 0.5346, 0.8519, 0.5}
 GlobalExplorerUI.iconsFilename=g_currentModDirectory..'resources/plusSign.dds'
 GlobalExplorerUI.lastIconElement=nil
 GlobalExplorerUI.specTypes={'test1','test2'}
---GlobalExplorerUI.iconsFilename='C:/Users/Lothar/Documents/My Games/FarmingSimulator2022/mods/FS22_EasyDevControls/resources/ui_icons.dds'
--- g_gui.guis.GeScreen.elements.1.elements.2.elements.1.elements.3
+
 GlobalExplorerUI.iconsUV = {
     GLOBAL_LIST = {0, 0, 64, 64},
     HISTORY_LIST = {64, 0, 64, 64}
@@ -66,7 +65,7 @@ function GlobalExplorerUI:onOpen()
 	g_inputBinding:setShowMouseCursor(true)
 	self:populateList()
 	printdebug('GlobalExplorerUI:onOpen()- poplist done')
-	--GlobalExplorerUI:onGlobalEnterPressed()
+	
 	GlobalExplorerUI:onListSelectionChanged(dialog.geValueList.selectedIndex)
 	dialog.geGlobalList.elements[1].overlay.color[1]=0
 	dialog.geGlobalList.elements[1].overlay.color[2]=0
@@ -216,8 +215,8 @@ end
 
 function GlobalExplorerUI:onGlobalEnterPressed()
 	printdebug('GlobalExplorerUI:onGlobalEnterPressed()- text='..dialog.textInputElement.text)
-	local text=dialog.textInputElement.text
-	local f=loadstring("return "..text)
+	local text=string.match(dialog.textInputElement.text,'[^()]*') -- strip function call decoration
+	local f=loadstring("return "..tostring(text))
 	local err=nil
 	local err,object=pcall(f)
 	local type=type(object)
