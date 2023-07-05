@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="74">
+	<author>Rianilothe</author>
+    <version>1.0.0.0</version>
+	<title>
+		<en>GlobalExplorer</en>
+		<de>Globaler Explorer</de>
+	</title>
+
+    <description>
+        <en>
+		<![CDATA[Mod developer tool for viewing live game data.]]>
+		</en>
+        <de>
+		<![CDATA[Mod-Entwicklertool zum Anzeigen von Live-Spieldaten.]]>
+		</de>
+    </description>
+
+	<iconFilename>icon.dds</iconFilename>
+	<l10n filenamePrefix="l10n/l10n" />
+    <multiplayer supported="true" />
+	
+	<extraSourceFiles>
+		<sourceFile filename="GlobalExplorer.lua"/>
+	</extraSourceFiles>
+
+    <actions>
+        <action name="GE_FRAME" category="PLAYER" axisType="HALF" />
+    </actions>  
+
+    <inputBinding>
+        <actionBinding action="GE_FRAME" >
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_lshift KEY_g" />
+        </actionBinding>
+    </inputBinding> 
+</modDesc>

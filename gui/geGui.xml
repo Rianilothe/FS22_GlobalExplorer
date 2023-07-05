@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUI onOpen="onOpen" onClose="onClose" onCreate="onCreate">
+
+	<GuiElement type="bitmap" profile="geDialogBg" id="dialogElement">
+
+
+		<!-- page header -->
+		<GuiElement debugEnabled="false" type="empty" profile="ingameMenuFrameHeaderPanel" position="10px -10px">
+			<GuiElement type="bitmap" profile="worldHeaderIcon" position="0px 0px" visible="true" />
+			<GuiElement type="text" profile="geHeader" text="Global Explorer" visible="true"/>
+		</GuiElement>
+
+		<!-- main section -->
+        <GuiElement type="boxLayout" profile="geLayoutBox" alignmentX="left" alignmentY="top" id="geLayoutBox">
+
+			<!-- Location, GlobalList icon, HistoryList icon -->
+			<GuiElement type="empty" profile="emptyPanel" id="GlobalVarBar" debugEnabled="false" position="0px 0px" size="830px 40px">
+				<GuiElement type="button" profile="favButtonProfile" position="0px 0px" text="" onClick="onFavIconClick" id="favButton" visible="true"/>				
+				<GuiElement type="textInput" profile="geDialogTextInput" id="textInputElement" onEnterPressed="onGlobalEnterPressed" onEscPressed="onEscPressed" maxCharacters="100" text="none" textAlignment="left"/>
+				<GuiElement type="button" profile="gButtonProfile" position="710px 0px" text="" onClick="onIconClick" id="gButton" visible="true"/>				
+				<GuiElement type="button" profile="hButtonProfile" position="750px 0px" text="" onClick="onIconClick" id="hButton" visible="true"/>
+				<GuiElement type="button" profile="fButtonProfile" position="790px 0px" text="" onClick="onIconClick" id="fButton" visible="true"/>
+			</GuiElement>
+		
+			<!-- table list -->
+			<GuiElement type="empty" profile="geListBox" id="geListBox">
+				<GuiElement type="list" profile="geVarList" onSelectionChanged="onListSelectionChanged" onDoubleClick="onDoubleClick" id="geValueList" >
+					<GuiElement type="listItem" profile="geVarListItem" id="listItemTemplate">
+						<GuiElement type="text" profile="geVarItemText" text="Route 10" name="listItemText" id="listItemText"/>
+						<!--GuiElement type="text" profile="geVarItemText" textAlignment="right" text="fullname" name="listItemFullname" /-->
+					</GuiElement>
+				</GuiElement>
+
+				<GuiElement type="bitmap" profile="geSlider">
+					<GuiElement type="slider" profile="verticalGlassListSlider" size="16px 735px" dataElementId="geValueList" handleFocus="false" />
+				</GuiElement>
+			</GuiElement>
+			
+			<!-- current data element name & value -->
+			<GuiElement type="text" profile="geText" id="currentVar" text="no selection" textAlignment="left" />
+			<GuiElement type="text" profile="geText" id="currentValue" text="no selection" textAlignment="left" textMaxNumLines="4" size="800px 80px"/>
+		</GuiElement>
+		<GuiElement type="button" profile="upButtonProfile" position="0px 135px" text="" onClick="onUpIconClick" id="upButton" visible="true"/>
+		
+		<!-- std ok/esc buttons -->
+		<GuiElement type="flowLayout" profile="buttonBoxDocked" id="buttonsPC" position="20px 12px" debugEnabled="false">
+			<GuiElement type="button" profile="buttonBack" text="Back" onClick="onClickBack" id="noButton"/>
+			<GuiElement type="button" profile="buttonOK" text="OK" onClick="onClickOk" id="yesButton" visible="false"/>
+		</GuiElement>
+
+		<!-- Globals/History list -->
+		<GuiElement type="empty" profile="geGlobalBox" id="geGlobalBox">
+			<GuiElement type="list" profile="geGlobalList" onSelectionChanged="onGlobalListSelectionChanged" onDoubleClick="onGlobalDoubleClick" id="geGlobalList" >
+				<GuiElement type="listItem" profile="geGlobalListItem" id="globalItemTemplate">
+					<GuiElement type="text" profile="geGlobalItemText" text="Global list element" name="listItemText" id="globalItemText"/>						
+				</GuiElement>
+			</GuiElement>
+			<GuiElement type="bitmap" profile="geGlobalSlider">
+				<GuiElement type="slider" profile="verticalGlassListSlider" size="16px 735px" dataElementId="geGlobalList" handleFocus="false" />
+			</GuiElement>
+		</GuiElement>
+		
+	</GuiElement>
+	
+</GUI>

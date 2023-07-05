@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUIProfiles>
+
+	<Presets>
+		<Preset name="colorMainUI" value="0.0227 0.5346 0.8519 1.0" />
+		<Preset name="colorGlassLight_50" value="0.718 0.716 0.715 0.0625" />
+		<Preset name="colorListRowBackground" value="$preset_colorGlassLight_50" />
+	</Presets>
+
+	<Profile name="geDialogBg" extends="yesNoDialogBg">
+		<Value name="frameTopColor" value="1 0 1 0.25"/>
+		<Value name="frameBottomColor" value="0.718 0.716 0.715 0.25"/>
+		<Value name="size" value="830px 1080px"/>
+	</Profile>
+	
+	<Profile name="geHeader" extends="ingameMenuFrameHeaderText">
+		<Value name="position" value="80px 0px"/>
+		<Value name="textColor" value="$preset_colorMainUI"/>
+	</Profile>
+	
+    <Profile name="worldHeaderIcon" extends="menuHeaderIcon" >
+        <Value name="imageUVs" value="0px 0px 65px 65px"/>
+		<Value name="iconSize" value="64px 64px"/>
+        <Value name="imageFilename" value="g_iconsUIFilename"/>
+		<Value name="size" value="80px 80px"/>	
+		<Value name="imageColor" value="$preset_colorMainUI"/>
+    </Profile>
+
+    <Profile name="geLayoutBox" extends="emptyPanel">
+        <Value name="screenAlign" value="topLeft" />
+        <Value name="size" value="830px 750px" />
+		<Value name='position' value='0px 200px' />
+    </Profile>
+
+    <Profile name="geInputBox" extends="emptyPanel" with="lightFrame">
+        <Value name="screenAlign" value="topLeft" />
+        <Value name="size" value="830px 40px" />
+		<Value name='position' value='850px 160px' />
+    </Profile>
+
+    <Profile name="geDialogTextInput" extends="dialogTextInput" >
+        <Value name="anchors" value="0 0 0 0" />
+        <Value name="position" value="40px 0px"  />
+		<Value name="size" value="670px 40px"  />
+		<Value name="textOffset" value="10px 0px"  />
+		<Value name="maxInputTextWidth" value="670px"/>
+    </Profile>
+	
+    <Profile name="gButtonProfile" >
+        <Value name="anchors" value="0 0 0 0" />
+		<Value name="imageFilename" value="g_globalExplorerUIFilename"/>
+        <Value name="imageUVs" value="0px 0px 256px 1024px"/>
+        <Value name="size" value="40px 40px"/>
+		<Value name="imageColor" value="$preset_colorMainUI"/>
+    </Profile>
+
+    <Profile name="hButtonProfile" >
+        <Value name="anchors" value="0 0 0 0" />
+		<Value name="imageFilename" value="g_globalExplorerUIFilename"/>
+        <Value name="imageUVs" value="256px 0px 256px 1024px"/>
+        <Value name="size" value="40px 40px"/>
+		<Value name="imageColor" value="$preset_colorMainUI"/>
+    </Profile>
+
+    <Profile name="fButtonProfile" >
+        <Value name="anchors" value="0 0 0 0" />
+		<Value name="imageFilename" value="g_globalExplorerUIFilename"/>
+        <Value name="imageUVs" value="512px 0px 256px 1024px"/>
+        <Value name="size" value="40px 40px"/>
+		<Value name="imageColor" value="$preset_colorMainUI"/>
+    </Profile>
+
+    <Profile name="favButtonProfile" >
+        <Value name="anchors" value="0 0 0 0" />
+		<Value name="imageFilename" value="g_globalExplorerUIFilename2"/>
+        <Value name="imageUVs" value="0px 0px 256px 1024px"/>
+        <Value name="size" value="40px 40px"/>
+		<Value name="imageColor" value="$preset_colorMainUI"/>
+    </Profile>
+	
+	<!--		NAME/VALUE list			-->
+	
+    <Profile name="geListBox" extends="emptyPanel" >
+        <Value name="anchors" value="0 0 0 0" />
+        <Value name="screenAlign" value="topLeft" />
+        <Value name="size" value="830px 750px" />
+		<Value name='position' value='850px 0px' />
+    </Profile>
+
+    <Profile name="geVarList" extends="list">
+        <Value name="anchors" value="0 0 0 0" />
+        <Value name="size" value="800px 750px" />
+        <Value name="selectOnScroll" value="true" />
+        <Value name="isHorizontalList" value="false" />
+        <Value name="itemsPerCol" value="30" />
+        <Value name="listItemHeight" value="25px" />
+        <Value name="listItemWidth" value="800px" />
+    </Profile>
+	
+    <Profile name="geVarListItem" extends="listItem">
+        <Value name="imageColor" value="$preset_colorListRowBackground" />
+        <Value name="imageFocusedColor" value="$preset_colorMainUI" />
+        <Value name="imageSelectedColor" value="$preset_colorMainUI" />
+        <Value name="size" value="800px 25px" />
+        <!--Value name="position" value="0px 0px" /-->
+        <Value name="screenAlign" value="topLeft" />
+        <Value name="positionOrigin" value="topLeft" />
+    </Profile>
+
+    <Profile name="geVarItemText" extends="textDefault">
+        <Value name="size" value="770px 25px" />
+        <Value name="textMaxWidth" value="586px" />
+        <Value name="textVerticalAlignment" value="middle" />
+        <Value name="textColor" value="1 1 1 1" />
+        <Value name="textSize" value="16px" />
+        <Value name="textBold" value="true" />
+        <Value name="textOffset" value="26px 2px" />
+        <Value name="textFocusedOffset" value="26px 2px" />
+    </Profile>
+
+    <Profile name="geSlider" extends="verticalGlassListSliderBackground">
+        <Value name="anchors" value="0 0 0 0" />
+        <Value name="screenAlign" value="topLeft" />
+        <Value name="size" value="30px 750px" />
+        <Value name="position" value="800px 0px" />
+    </Profile>
+
+
+
+
+	<!--		GLOBAL/HISTORY list			-->
+	
+    <Profile name="geGlobalBox" extends="emptyPanel" >
+        <Value name="anchors" value="0 0 0 0" />
+        <Value name="screenAlign" value="topLeft" />
+		<Value name="visible" value="false" />
+        <Value name="size" value="830px 750px" />
+		<Value name='position' value='0px 160px' />
+    </Profile>
+	
+    <Profile name="geGlobalList" extends="list">
+        <Value name="anchors" value="0 0 0 0" />
+        <!--Value name="position" value="0px 0px" /-->
+        <Value name="size" value="800px 750px" />
+        <Value name="selectOnScroll" value="true" />
+        <Value name="isHorizontalList" value="false" />
+        <Value name="itemsPerCol" value="30" />
+        <Value name="listItemHeight" value="25px" />
+        <Value name="listItemWidth" value="800px" />
+    </Profile>
+	
+    <Profile name="geGlobalListItem" extends="listItem">
+        <Value name="imageColor" value="$preset_colorListRowBackground" />
+        <Value name="imageFocusedColor" value="$preset_colorMainUI" />
+        <Value name="imageSelectedColor" value="$preset_colorMainUI" />
+        <Value name="size" value="800px 25px" />
+        <!--Value name="position" value="0px 0px" /-->
+        <Value name="screenAlign" value="topLeft" />
+        <Value name="positionOrigin" value="topLeft" />
+    </Profile>
+
+    <Profile name="geGlobalItemText" extends="textDefault">
+        <Value name="size" value="770px 25px" />
+        <Value name="textMaxWidth" value="586px" />
+        <Value name="textVerticalAlignment" value="middle" />
+        <Value name="textColor" value="1 1 0.4 1" />
+        <Value name="textSize" value="16px" />
+        <Value name="textBold" value="true" />
+        <Value name="textOffset" value="26px 2px" />
+        <Value name="textFocusedOffset" value="26px 2px" />
+    </Profile>
+
+    <Profile name="geGlobalSlider" extends="verticalGlassListSliderBackground">
+        <Value name="anchors" value="0 0 0 0" />
+        <Value name="screenAlign" value="topLeft" />
+        <Value name="size" value="30px 750px" />
+        <Value name="position" value="800px 0px" />
+    </Profile>
+	
+
+
+
+
+	<!--		CURRENT NAME/VALUE			-->
+    <Profile name="upButtonProfile" >
+        <Value name="anchors" value="0 0 0 0" />
+		<Value name="imageFilename" value="g_globalExplorerUIFilename2"/>
+        <Value name="imageUVs" value="256px 0px 256px 1024px"/>
+        <Value name="size" value="25px 25px"/>
+		<Value name="imageColor" value="0 1 0 1"/>
+    </Profile>
+	
+    <Profile name="geText" extends="textDefault">
+        <Value name="size" value="800px 25px" />
+        <Value name="textMaxWidth" value="800px" />
+        <Value name="textVerticalAlignment" value="top" />
+        <Value name="textColor" value="0 1 0 1" />
+        <Value name="textSize" value="16px" />
+        <Value name="textBold" value="true" />
+        <Value name="textOffset" value="26px 2px" />
+        <Value name="textFocusedOffset" value="26px 2px" />
+    </Profile>	
+
+</GUIProfiles>
