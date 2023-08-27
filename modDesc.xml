@@ -1,40 +1,84 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="74">
+<modDesc descVersion="76">
 	<author>Rianilothe</author>
-    <version>1.0.0.0</version>
+    <version>1.1.0.0</version>
 	<title>
-		<en>GlobalExplorer</en>
-		<de>GlobalerExplorer</de>
+		<en>Global Explorer</en>
+		<de>Globaler Explorer</de>
 	</title>
 
-    <description>
-        <en>
-		<![CDATA[The GlobalExplorer mod for FS22 provides an in-game data browser.
-- lists of known globals, history and favorites
-- lists data element names, types, values
-- tables types include element count and "name/type" if present
-- global list may be expanded locally (see modSettings/FS22_GlobalExplorer/globals.xml dir)
-]]>
-		</en>
-        <de>
-		<![CDATA[Der GlobalExplorer-Mod für FS22 bietet einen In-Game-Datenbrowser.
-- Listen bekannter Globals, Verlauf und Favoriten
-- listet Datenelementnamen, -typen und -werte auf
-- Tabellentypen umfassen die Elementanzahl und „Name/Typ“, falls vorhanden
-- globale Liste kann lokal erweitert werden (siehe Verzeichnis modSettings/FS22_GlobalExplorer/globals.xml)
-]]>
-		</de>
-        <fr>
-		<![CDATA[Le mod GlobalExplorer pour FS22 fournit un navigateur de données dans le jeu.
-- listes de globals connus, historique et favoris
-- répertorie les noms, les types et les valeurs des éléments de données
-- les types de tables incluent le nombre d'éléments et "nom/type" s'ils sont présents
-- la liste globale peut être développée localement (voir modSettings/FS22_GlobalExplorer/globals.xml dir)
-]]>
-		</fr>
-    </description>
+<description>
+	<en>
+<![CDATA[This mod allows the browsing of live global game data
 
-	<iconFilename>icon.dds</iconFilename>
+Whether you're researching for a new mod or just curious what's in there, this mod makes the global data easily accessible. Just select a global from the Globals List ("g" icon) to see it's contents. The full element name and full value of the selected element is shown at the bottom (in green text). List getting to crowded? Click the green arrow next to the full name and it gets promoted to the root element at the top. If there's a root element that you use frequently, tag it as a favorite (using the heart icon on the left) and it will appear in the Favorites List (heart icon on the right). There's also a History List ("h" icon on the left) to track what you've been looking at.
+
+The Global Explorer mod includes globals (i.e. g_currentMission) found in the source code included in the game and may not be a complete listing. New globals can viewed by entering them in the text box at the top and saved by marking them as a favorite. Only global data can be viewed as mods don't have access to each other's data.
+
+Features
+- double click on tables in list to show their constituent elements
+- g/h/heart icons (top right) for global, history and favorites lists
+- heart icon (top left) to mark root value as favorite
+- selected data element full name and value displayed at bottom in green text
+- promote full name of current selected element to the root with the green arrow at bottom
+
+Feel free to report bugs or contact me at https://github.com/Rianilothe/FS22_GlobalExplorer
+
+Changelog v1.1.0.0:
+- fixed bug causing GUI error on some configurations
+- turned off debug logging
+- switching between global, history and favorites lists no longer requires closing the list
+- expanded the global variables list
+]]>
+	</en>
+	<de>
+<![CDATA[Dieser Mod ermöglicht das Durchsuchen der globalen Live-Spiel-Daten
+
+Egal, ob du für einen neuen Mod recherchierst oder einfach nur neugierig bist, was da drin ist, dieser Mod macht die globalen Daten leicht zugänglich. Wähle einfach ein globales Element aus der Globalliste ("g"-Symbol), um dessen Inhalt zu sehen. Der vollständige Elementname und der vollständige Wert des ausgewählten Elements werden unten angezeigt (in grünem Text). Die Liste wird zu voll? Mit einem Klick auf den grünen Pfeil neben dem vollständigen Namen wird dieser zum Stammelement an der Spitze der Liste befördert. Wenn es ein Stammelement gibt, welches du häufig verwendest, markiere es als Favorit (mit dem Herzsymbol auf der linken Seite) und es erscheint in der Favoritenliste (Herzsymbol auf der rechten Seite). Außerdem gibt es eine Verlaufsliste (Symbol "h" auf der linken Seite), in der du sehen kannst, was du dir angeschaut hast.
+
+Der Global Explorer Mod enthält Globals (z.B. g_currentMission), die im Quellcode des Spiels gefunden wurden, und ist nicht unbedingt eine vollständige Liste. Neue Globals können eingesehen werden, indem man sie in das Textfeld oben eingibt und durch Markieren als Favorit speichert. Es können nur globale Daten eingesehen werden, da Mods keinen Zugriff auf die Daten der anderen Mods haben.
+
+Eigenschaften:
+- Doppelklick auf Tabellen in der Liste, um die einzelnen Elemente anzuzeigen
+- g/h/Herz-Symbole (oben rechts) für globale, Verlaufs- und Favoritenlisten
+- Herz-Symbol (oben links), um den Stammwert als Favorit zu markieren
+- Vollständiger Name und Wert des ausgewählten Datenelements werden unten in grünem Text angezeigt
+- den vollständigen Namen des aktuell ausgewählten Elements mit dem grünen Pfeil am unteren Rand zum Stammwert befördern
+
+Melden Sie gerne Fehler oder kontaktieren Sie mich unter https://github.com/Rianilothe/FS22_GlobalExplorer
+
+Changelog v1.1.0.0:
+- Fehler behoben, der bei einigen Konfigurationen zu GUI-Fehlern führte
+- Debug-Protokollierung deaktiviert
+- Das Wechseln zwischen globalen Listen, Verlaufslisten und Favoritenlisten erfordert nicht mehr das Schließen der Liste
+- Die Liste der globalen Variablen wurde erweitert
+]]>
+	</de>
+	<fr>
+<![CDATA[Ce mod permet de parcourir les données de jeu mondiales en direct
+
+Que vous recherchiez un nouveau mod ou que vous soyez simplement curieux de savoir ce qu'il contient, ce mod rend les données globales facilement accessibles. Sélectionnez simplement un global dans la liste des globaux (icône "g") pour voir son contenu. Le nom complet de l'élément et la valeur complète de l'élément sélectionné sont affichés en bas (en texte vert). La liste devient bondée ? Cliquez sur la flèche verte à côté du nom complet et il est promu à l'élément racine en haut. S'il y a un élément racine que vous utilisez fréquemment, étiquetez-le comme favori (en utilisant l'icône en forme de cœur à gauche) et il apparaîtra dans la liste des favoris (icône en forme de cœur à droite). Il y a aussi une liste d'historique (icône "h" sur la gauche) pour suivre ce que vous avez regardé.
+
+Le mod GlobalExplorer inclut des globals (c'est-à-dire g_currentMission) trouvés dans le code source inclus dans le jeu et peut ne pas être une liste complète. Les nouveaux globaux peuvent être visualisés en les saisissant dans la zone de texte en haut et enregistrés en les marquant comme favoris. Seules les données globales peuvent être consultées car les mods n'ont pas accès aux données des autres.
+
+Caractéristiques
+- double-cliquez sur les tables dans la liste pour afficher leurs éléments constitutifs
+- icônes g/h/cœur (en haut à droite) pour les listes globale, historique et favoris
+- icône en forme de cœur (en haut à gauche) pour marquer la valeur racine comme favorite
+- nom complet et valeur de l'élément de données sélectionné affiché en bas en texte vert
+- promouvoir le nom complet de l'élément actuellement sélectionné à la racine avec la flèche verte en bas
+
+N'hésitez pas à signaler des bugs ou à me contacter à https://github.com/Rianilothe/FS22_GlobalExplorer
+
+Changelog v1.1.0.0:
+- correction d'un bug provoquant une erreur GUI sur certaines configurations
+- désactivé la journalisation du débogage
+- le basculement entre les listes globale, historique et favoris ne nécessite plus de fermer la liste
+- élargi la liste des variables globales
+]]>
+	</fr>
+</description>
+	<iconFilename>icon_GlobalExplorer.dds</iconFilename>
 	<l10n filenamePrefix="l10n/l10n" />
     <multiplayer supported="true" />
 	

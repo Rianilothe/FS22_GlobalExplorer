@@ -5,6 +5,7 @@ GlobalExplorer.configFolder=''
 GlobalExplorer.historyFilename=''
 GlobalExplorer.globalFilename=''
 GlobalExplorer.favoritesFilename=''
+
 local GlobalExplorer_mt = Class(GlobalExplorer)
 g_globalExplorerUIFilename=g_currentModDirectory..'resources/ui_icons.dds'
 g_globalExplorerUIFilename2=g_currentModDirectory..'resources/ui_icons2.dds'
@@ -22,6 +23,7 @@ function GlobalExplorer.new()
 end
 
 function GlobalExplorer:load(mission)
+	printdebug('GlobalExplorer:load() start')
 	-- create/format save files & dirs
     local modSettingsFolder = getUserProfileAppPath() .. "modSettings/"
     createFolder(modSettingsFolder)
@@ -31,10 +33,19 @@ function GlobalExplorer:load(mission)
 	self.globalFilename=self.configFolder..'global.xml'
 	self.favoritesFilename=self.configFolder..'favorites.xml'
 	
+	g_gui:loadProfiles(self.modDirectory .. "gui/geProfiles.xml")
 	self.ui = GlobalExplorerUI.new()
+	g_gui:loadGui(self.modDirectory .. "gui/geGui.xml","GeScreen",self.ui)
+	printdebug('GlobalExplorer:load() end')
+end
+
+--[[function GlobalExplorer:onLoadMapFinished()
+	printdebug('GlobalExplorer: onLoadMapFinished start')
 	g_gui:loadProfiles(self.modDirectory .. "gui/geProfiles.xml")
 	g_gui:loadGui(self.modDirectory .. "gui/geGui.xml","GeScreen",self.ui)
+	printdebug('GlobalExplorer: onLoadMapFinished end')
 end
+--]]
 
 function GlobalExplorer:unload(mission)
 	-- called when game exiting
@@ -122,6 +133,9 @@ function GlobalExplorer:makeList(object, depthIn, prefixIn)
 	table.sort(tupleList, function(left, right) 
 		lfn = left==nil and "zzz" or left.fullName
 		rfn = right==nil and "zzz" or right.fullName
+		lfn = string.gsub(lfn,'[[]',' ')
+		rfn = string.gsub(rfn,'[[]',' ')
+
 		--print('tupleSort: left='..tostring(lfn)..', right='..tostring(rfn))
 		return lfn < rfn end)
 	printdebug('GlobalExplorer:makeList- sort done, len after='..tostring(len(tupleList)))
@@ -149,6 +163,7 @@ end
 local function load(mission)
 	printdebug('GlobalExplorer: local load, mission='..tostring(mission))
 	GlobalExplorer:load(mission)
+	--mission:registerToLoadOnMapFinished(GlobalExplorer)
 end
 
 local function unload(mission)

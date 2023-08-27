@@ -64,16 +64,16 @@ function GlobalExplorerUI:onOpen()
 	self.cursorBefore = g_inputBinding:getShowMouseCursor()
 	g_inputBinding:setShowMouseCursor(true)
 	self:populateList()
-	printdebug('GlobalExplorerUI:onOpen()- poplist done')
+	--printdebug('GlobalExplorerUI:onOpen()- poplist done')
 	
 	GlobalExplorerUI:onListSelectionChanged(dialog.geValueList.selectedIndex)
+	-- set background to black for list
 	dialog.geGlobalList.elements[1].overlay.color[1]=0
 	dialog.geGlobalList.elements[1].overlay.color[2]=0
 	dialog.geGlobalList.elements[1].overlay.color[3]=0
 	dialog.geGlobalList.elements[1].overlay.color[4]=1
 	dialog.geGlobalList:setAlpha(1)
 	dialog.geGlobalBox:setAlpha(1)
-	
 	printdebug('GlobalExplorerUI:onOpen()- loaded '..tostring(#GlobalExplorerUI.specTypes)..' specTypes')
 	printdebug('GlobalExplorerUI:onOpen()- end')
 end
@@ -166,26 +166,24 @@ function GlobalExplorerUI:onIconClick(element)
 	else -- fButton
 		others={dialog.gButton,dialog.hButton}
 	end
-	if dropdownVisible then		
-		if lastIconElement== element then
-			-- close it
-			GlobalExplorerUI.lastIconElement= nil
-			-- reset button colors
-			element.overlay.color[1]=0.0227
-			element.overlay.color[2]=0.5346
-			element.overlay.color[3]=0.8519
-			others[1].overlay.color[1]=0.0227
-			others[1].overlay.color[2]=0.5346
-			others[1].overlay.color[3]=0.8519
-			others[1].overlay.color[4]=1
-			others[2].overlay.color[1]=0.0227
-			others[2].overlay.color[2]=0.5346
-			others[2].overlay.color[3]=0.8519
-			others[2].overlay.color[4]=1
-			dialog.geGlobalBox.visible=false
-			dialog.geListBox.visible=true
-			dialog.geValueList:setSelectedIndex(dialog.geValueList.selectedIndex,1)
-		end
+	if dropdownVisible and lastIconElement== element then		
+		-- close it
+		GlobalExplorerUI.lastIconElement= nil
+		-- reset button colors
+		element.overlay.color[1]=0.0227
+		element.overlay.color[2]=0.5346
+		element.overlay.color[3]=0.8519
+		others[1].overlay.color[1]=0.0227
+		others[1].overlay.color[2]=0.5346
+		others[1].overlay.color[3]=0.8519
+		others[1].overlay.color[4]=1
+		others[2].overlay.color[1]=0.0227
+		others[2].overlay.color[2]=0.5346
+		others[2].overlay.color[3]=0.8519
+		others[2].overlay.color[4]=1
+		dialog.geGlobalBox.visible=false
+		dialog.geListBox.visible=true
+		dialog.geValueList:setSelectedIndex(dialog.geValueList.selectedIndex,1)
 	else
 		-- set list type
 		lastIconElement= element
@@ -195,14 +193,14 @@ function GlobalExplorerUI:onIconClick(element)
 		element.overlay.color[1]=1
 		element.overlay.color[2]=1
 		element.overlay.color[3]=0.4
-		others[1].overlay.color[1]=0.5
-		others[1].overlay.color[2]=0.5
-		others[1].overlay.color[3]=0.5
-		others[1].overlay.color[4]=0.25
-		others[2].overlay.color[1]=0.5
-		others[2].overlay.color[2]=0.5
-		others[2].overlay.color[3]=0.5
-		others[2].overlay.color[4]=0.25
+		others[1].overlay.color[1]=0.0227
+		others[1].overlay.color[2]=0.5346
+		others[1].overlay.color[3]=0.8519
+		others[1].overlay.color[4]=1
+		others[2].overlay.color[1]=0.0227
+		others[2].overlay.color[2]=0.5346
+		others[2].overlay.color[3]=0.8519
+		others[2].overlay.color[4]=1
 		dialog.geGlobalBox.visible=true
 		dialog.geListBox.visible=false
 		GlobalExplorerUI.lastIconElement=element
@@ -221,8 +219,6 @@ function GlobalExplorerUI:onGlobalEnterPressed()
 	local err,object=pcall(f)
 	local type=type(object)
 	printdebug('GlobalExplorerUI:onGlobalEnterPressed()- err='..tostring(err)..', object='..tostring(object)..', type='..type)
-	local x=f()
-	printdebug('GlobalExplorerUI:onGlobalEnterPressed()- x='..tostring(x))
 	if object == nil then
 		printdebug('GlobalExplorerUI:onGlobalEnterPressed()- global "'..text..'" is nil')
 		dialog.textInputElement:setText(GlobalExplorerUI.currentObjectName,false,true)
@@ -256,9 +252,9 @@ function GlobalExplorerUI:populateList()
 	local scrollIndex=dialog.geValueList.sliderElement.currentValue
 	GlobalExplorerUI.repopulating=1
 	dialog.geValueList:deleteListItems()
-	printdebug('GlobalExplorerUI:populateList() delete complete')
+	--printdebug('GlobalExplorerUI:populateList() delete complete')
 	local d
-	printdebug('      before: top='..tostring(top)..', selected='..tostring(selected)..', current='..GlobalExplorerUI.currentObjectName)
+	--printdebug('      before: top='..tostring(top)..', selected='..tostring(selected)..', current='..GlobalExplorerUI.currentObjectName)
 	dialog.tupleList = GlobalExplorer:makeList(GlobalExplorerUI.currentObject,0,GlobalExplorerUI.currentObjectName)
 	GlobalExplorerUI.listElements={}
 	for i=1,#dialog.tupleList,1 do
@@ -276,7 +272,7 @@ function GlobalExplorerUI:populateList()
 	dialog.geValueList.selectedIndex=selected
 	dialog.geValueList:updateItemPositions()
 	dialog.geValueList.sliderElement:setValue(scrollIndex)
-	printdebug('      after: top='..tostring(dialog.geValueList.firstVisibleItem)..', selected='..tostring(dialog.geValueList.selectedIndex))
+	--printdebug('      after: top='..tostring(dialog.geValueList.firstVisibleItem)..', selected='..tostring(dialog.geValueList.selectedIndex))
 	GlobalExplorerUI.repopulating=0
 	printdebug('GlobalExplorerUI:populateList() end')
 end
@@ -288,7 +284,7 @@ function GlobalExplorerUI:getDescriptiveText(tuple)
 	for k,v in pairs(idNames) do
 		if tuple.table[v] ~=nil then			
 			suffix=' "'..tuple.table[v]..'"'
-			printdebug('suffix='..suffix)
+			--printdebug('suffix='..suffix)
 			break
 		end
 	end
@@ -330,13 +326,13 @@ end
 function GlobalExplorerUI:loadGlobals()
 	printdebug('GlobalExplorerUI:loadGlobals()')
 	-- open local copy first
-	local xmlFile = loadXMLFile("globals_XML", GlobalExplorer.globalFilename)
-	printdebug('GlobalExplorerUI:loadGlobals()- xmlFilename='..tostring(GlobalExplorer.globalFilename)..', xmlFile='..tostring(xmlFile))
-	-- if not present, open list in mod package and copy it locally so any user updates can be included
-	if xmlFile==0 then		GlobalExplorer:createGlobalsFile()
+	if fileExists(GlobalExplorer.globalFilename)==false then
+		GlobalExplorer:createGlobalsFile()
 		xmlFile = loadXMLFile("globals_XML", GlobalExplorer.globalFilename)
 		printdebug('GlobalExplorerUI:loadGlobals()- xmlFilename='..tostring(GlobalExplorer.globalFilename)..', xmlFile='..tostring(xmlFile))
 	end
+	local xmlFile = loadXMLFile("globals_XML", GlobalExplorer.globalFilename)
+	--printdebug('GlobalExplorerUI:loadGlobals()- xmlFilename='..tostring(GlobalExplorer.globalFilename)..', xmlFile='..tostring(xmlFile))
 	local template='globalList.global(%d)#name'
 	local i=1
 	self.globalsList={}
@@ -356,9 +352,9 @@ function GlobalExplorerUI:loadGlobals()
 		elseif type(obj)~='table' then
 			suffix=' ('..tostring(obj)..')'
 		end
-		printdebug('    '..g..'='..tostring(f())..', suffix='..suffix)
+		--printdebug('    '..g..'='..tostring(f())..', suffix='..suffix)
 		self.globalsList[i]=getXMLString(xmlFile, key)..suffix
-		printdebug('GlobalExplorerUI:loadGlobals()- ['..tostring(i)..']='..self.globalsList[i])
+		--printdebug('GlobalExplorerUI:loadGlobals()- ['..tostring(i)..']='..self.globalsList[i])
 		i = i + 1
 	end
 --	for i=1,#self.globalsList,1 do
@@ -390,24 +386,24 @@ function GlobalExplorerUI:historyListAdd(item)
 	-- remove item if already in list
 	for i,j in ipairs(GlobalExplorerUI.historyList) do
 		if j==item then
-			printdebug('historyListAdd: remove '..item)
+			--printdebug('historyListAdd: remove '..item)
 			table.remove(GlobalExplorerUI.historyList,i)
 			break
 		end
 	end
 	
 	-- add at beginning
-	printdebug('historyListAdd: add')
+	--printdebug('historyListAdd: add')
 	table.insert(GlobalExplorerUI.historyList,1,item)
 	
 	-- if len > max then remove last item
-	printdebug('historyListAdd: clip')
+	--printdebug('historyListAdd: clip')
 	while #GlobalExplorerUI.historyList>GlobalExplorerUI.historyMax do
-		printdebug('historyListAdd: clip '..GlobalExplorerUI.historyList[#GlobalExplorerUI.historyList])
+		--printdebug('historyListAdd: clip '..GlobalExplorerUI.historyList[#GlobalExplorerUI.historyList])
 		table.remove(GlobalExplorerUI.historyList,#GlobalExplorerUI.historyList)
 	end
 
-	if GlobalExplorer.debug==true then for i,j in ipairs(GlobalExplorerUI.historyList) do printdebug('['..tostring(i)..'] '..j) end end
+	--if GlobalExplorer.debug==true then for i,j in ipairs(GlobalExplorerUI.historyList) do printdebug('['..tostring(i)..'] '..j) end end
 	GlobalExplorerUI:updateHistoryFile()
 	printdebug('historyListAdd: end')
 end
@@ -415,9 +411,11 @@ end
 function GlobalExplorerUI:historyListLoad()
 	printdebug('GlobalExplorerUI:historyListLoad()')
 	-- open local copy first
+	if fileExists(GlobalExplorer.historyFilename)==false then
+		return
+	end
 	local xmlFile = loadXMLFile("history_XML", GlobalExplorer.historyFilename)
-	printdebug('GlobalExplorerUI:historyListLoad()- xmlFilename='..tostring(GlobalExplorer.historyFilename)..', xmlFile='..tostring(xmlFile))
-	if xmlFile==0 then return end
+	--printdebug('GlobalExplorerUI:historyListLoad()- xmlFilename='..tostring(GlobalExplorer.historyFilename)..', xmlFile='..tostring(xmlFile))
 	local template='historyList.historyItem(%d)#name'
 	local i=1
 	GlobalExplorerUI.historyList={}
@@ -427,7 +425,7 @@ function GlobalExplorerUI:historyListLoad()
 			break
 		end
 		GlobalExplorerUI.historyList[i]=getXMLString(xmlFile, key)
-		printdebug('GlobalExplorerUI:historyListLoad()- ['..tostring(i)..']='..GlobalExplorerUI.historyList[i])
+		--printdebug('GlobalExplorerUI:historyListLoad()- ['..tostring(i)..']='..GlobalExplorerUI.historyList[i])
 		i = i + 1
 	end
 end
@@ -437,7 +435,7 @@ function GlobalExplorerUI:updateHistoryFile()
 
 	-- new modSettings file
 	local historyXML = createXMLFile("history_XML", GlobalExplorer.historyFilename, 'historyList')
-	printdebug('GlobalExplorer:updateHistoryFile()- newFilename='..tostring(GlobalExplorer.historyFilename)..', historyXML='..tostring(historyXML))
+	--printdebug('GlobalExplorer:updateHistoryFile()- newFilename='..tostring(GlobalExplorer.historyFilename)..', historyXML='..tostring(historyXML))
 
 	-- read original, write modSettings
 	local template='historyList.historyItem(%d)#name'
@@ -446,7 +444,7 @@ function GlobalExplorerUI:updateHistoryFile()
 		-- read entry
 		local key = string.format(template, i-1)
 		history=j
-		printdebug('GlobalExplorer:updateHistoryFile()- ['..tostring(i)..']'..history..', key='..key)		
+		--printdebug('GlobalExplorer:updateHistoryFile()- ['..tostring(i)..']'..history..', key='..key)		
 		-- save entry
 		setXMLString(historyXML, key, history)		
 	end
@@ -468,7 +466,7 @@ function GlobalExplorerUI:onFavIconClick(element)
 			break
 		end
 	end
-	printdebug('GlobalExplorerUI:onFavIconClick(): inlist='..tostring(inlist))
+	--printdebug('GlobalExplorerUI:onFavIconClick(): inlist='..tostring(inlist))
 	-- update list, reset status
 	if element~=nil then 
 		-- icon click
@@ -506,7 +504,7 @@ function GlobalExplorerUI:updateFavoritesFile()
 
 	-- new modSettings file
 	local favoritesXML = createXMLFile("favorites_XML", GlobalExplorer.favoritesFilename, 'favoritesList')
-	printdebug('GlobalExplorer:updateFavoritesFile()- newFilename='..tostring(GlobalExplorer.favoritesFilename)..', favoritesXML='..tostring(favoritesXML))
+	--printdebug('GlobalExplorer:updateFavoritesFile()- newFilename='..tostring(GlobalExplorer.favoritesFilename)..', favoritesXML='..tostring(favoritesXML))
 
 	-- read original, write modSettings
 	local template='favoritesList.favoritesItem(%d)#name'
@@ -515,7 +513,7 @@ function GlobalExplorerUI:updateFavoritesFile()
 		-- read entry
 		local key = string.format(template, i-1)
 		favorites=j
-		printdebug('GlobalExplorer:updateFavoritesFile()- ['..tostring(i)..']'..favorites..', key='..key)		
+		--printdebug('GlobalExplorer:updateFavoritesFile()- ['..tostring(i)..']'..favorites..', key='..key)		
 		-- save entry
 		setXMLString(favoritesXML, key, favorites)		
 	end
@@ -527,9 +525,11 @@ end
 function GlobalExplorerUI:favoritesListLoad()
 	printdebug('GlobalExplorerUI:favoritesListLoad()')
 	-- open local copy first
+	if fileExists(GlobalExplorer.favoritesFilename)==false then
+		return
+	end
 	local xmlFile = loadXMLFile("favorites_XML", GlobalExplorer.favoritesFilename)
-	printdebug('GlobalExplorerUI:favoritesListLoad()- xmlFilename='..tostring(GlobalExplorer.favoritesFilename)..', xmlFile='..tostring(xmlFile))
-	if xmlFile==0 then return end
+	--printdebug('GlobalExplorerUI:favoritesListLoad()- xmlFilename='..tostring(GlobalExplorer.favoritesFilename)..', xmlFile='..tostring(xmlFile))
 	local template='favoritesList.favoritesItem(%d)#name'
 	local i=1
 	GlobalExplorerUI.favoritesList={}
@@ -539,7 +539,7 @@ function GlobalExplorerUI:favoritesListLoad()
 			break
 		end
 		GlobalExplorerUI.favoritesList[i]=getXMLString(xmlFile, key)
-		printdebug('GlobalExplorerUI:favoritesListLoad()- ['..tostring(i)..']='..GlobalExplorerUI.favoritesList[i])
+		--printdebug('GlobalExplorerUI:favoritesListLoad()- ['..tostring(i)..']='..GlobalExplorerUI.favoritesList[i])
 		i = i + 1
 	end
 end
